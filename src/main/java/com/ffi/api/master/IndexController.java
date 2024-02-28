@@ -12,7 +12,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,10 +32,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class IndexController {
+
     @Autowired
     ProcessServices processServices;
-
-
 
     @RequestMapping(value = "/halo")
     public @ResponseBody
@@ -67,4 +69,63 @@ public class IndexController {
         rm.setItem(list);
         return rm;
     }
+
+    //============== new method from LUKAS 17-10-2023 ===============
+    @RequestMapping(value = "/get-data")
+    public @ResponseBody
+    ResponseMessage copyPaste(@RequestParam String param, @RequestParam(required = false) String date, @RequestParam(required = false) String outletId) throws IOException, Exception {
+        String dateCopy = date;
+        if (date == null) {
+            dateCopy = new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime());
+        }
+
+        ResponseMessage rm = new ResponseMessage();
+        try {
+            rm.setItem(processServices.getDataMaster(param, dateCopy,outletId));
+            rm.setSuccess(true);
+            rm.setMessage("Get Data Table Successfuly " + param + " For " + dateCopy);
+        } catch (Exception e) {
+            rm.setSuccess(false);
+            rm.setMessage("Get Data Table " + param + " For " + dateCopy + " Error : " + e.getMessage());
+        }
+        return rm;
+    }
+
+    @RequestMapping(value = "/receive-data")
+    public @ResponseBody
+    ResponseMessage insertDataMaster(@RequestBody Map<String, Object> param) throws IOException, Exception {
+        String outletId = param.get("outletId") != null ? param.get("outletId").toString() : null ;
+        String tableName = param.get("tableName").toString();
+        List<Map<String, Object>> bodyData = (List<Map<String, Object>>) param.get("data");
+        ResponseMessage rm = new ResponseMessage();
+        rm.setItem(new ArrayList());
+        try {
+            if (!bodyData.isEmpty()) {
+                List list = processServices.insertData(tableName, bodyData, outletId);
+                System.err.println("insertDataMaster: " + list);
+                Integer d = 0;
+                if( list.get(0) instanceof Integer integer){
+                    d = integer;
+                }
+                if (d > 0) {
+                    rm.setSuccess(true);
+                    rm.setMessage("Insert Data for table " + tableName + " Success");
+                    rm.setItem(list);
+                } else {
+                    rm.setSuccess(false);
+                    rm.setMessage("Insert Data for table " + tableName + " Failed");
+                }
+            } else {
+                rm.setSuccess(true);
+                rm.setMessage("No Data to Insert for table " + tableName);
+            }
+
+        } catch (Exception e) {
+            rm.setSuccess(false);
+            rm.setMessage("Insert Data Table " + tableName + " Error : " + e.getMessage());
+        }
+        return rm;
+    }
+    //============== End method from LUKAS 17-10-2023 ===============
+
 }
