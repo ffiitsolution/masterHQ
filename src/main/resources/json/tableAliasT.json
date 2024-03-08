@@ -1477,7 +1477,7 @@
         "hasOutletCode": "TRUE",
         "emptyFirst": "FALSE",
         "active": "TRUE",
-        "process": "TRUE",
+        "process": "FALSE",
         "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
