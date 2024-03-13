@@ -206,24 +206,20 @@ public class ProcessDaoImpl implements ProcessDao {
     }
 
     @Override
-    public List insertDataMaster(String tableName, List<Map<String, Object>> data, String outletId) {
-        List list = new ArrayList();
-        try {
-            list = compareData(data, tableName, outletId);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-        return list;
+    public Map<String, Object> insertDataMaster(String tableName, List<Map<String, Object>> data, String outletId) {
+        Map<String, Object> result = compareData(data, tableName, outletId);
+        return result;
     }
 
     // ========================= Function Stand Alone ======================
     // ===================== Compare Data to Master =================
-    public List compareData(List<Map<String, Object>> itemRecieve, String tableName, String outletId) {
+    public Map<String, Object> compareData(List<Map<String, Object>> itemReceive, String tableName, String outletId) {
         List<String> primaryKey = getPrimaryKey(tableName);
         int totalUpdateRow = 0;
         int totalInsertRow = 0;
+        List<String> errors = new ArrayList();
 
-        for (Map<String, Object> item : itemRecieve) {
+        for (Map<String, Object> item : itemReceive) {
             String conditionText = "";
             int indexKey = 0;
 
@@ -254,23 +250,38 @@ public class ProcessDaoImpl implements ProcessDao {
             List<Map<String, Object>> list = jdbcTemplate.query(query, prm, (ResultSet rs, int index) -> convertObject(rs));
             Map<String, Object> exist = list.isEmpty() ? null : list.get(0);
             if (exist == null || "".equals(conditionText)) {
-                totalInsertRow++;
-                insertData(tableName, item);
+                String resp = insertData(tableName, item);
+                switch (resp) {
+                    case "1" ->
+                        totalInsertRow++;
+                    case "0" -> {
+                    }
+                    default ->
+                        errors.add(resp);
+                }
             } else if (checkAllColumn(item, exist) == false) {
-                totalUpdateRow++;
-                updateData(tableName, item, primaryKey);
+                String resp = updateData(tableName, item, primaryKey);
+                switch (resp) {
+                    case "1" ->
+                        totalUpdateRow++;
+                    case "0" -> {
+                    }
+                    default ->
+                        errors.add(resp);
+                }
             }
         }
 
-        List list = new ArrayList();
-        list.add(totalInsertRow + totalUpdateRow);
-        list.add(totalInsertRow);
-        list.add(totalUpdateRow);
+        Map<String, Object> result = new HashMap();
+        result.put("total", totalInsertRow + totalUpdateRow);
+        result.put("insert", totalInsertRow);
+        result.put("update", totalUpdateRow);
+        result.put("errors", errors);
 
         System.out.println("Total Update Data Outlet " + outletId + " " + tableName + " : " + totalUpdateRow + " Row ");
         System.out.println("Total Insert Data Outlet " + outletId + " " + tableName + " : " + totalInsertRow + " Row ");
 
-        return list;
+        return result;
     }
 
     public String customQuery(String tableName, String date) {
@@ -360,7 +371,7 @@ public class ProcessDaoImpl implements ProcessDao {
         return resultReturn;
     }
 
-    public void insertData(String tableName, Map<String, Object> data) {
+    public String insertData(String tableName, Map<String, Object> data) {
         String columnName = "";
         String value = "";
         int indexKey = 0;
@@ -384,10 +395,15 @@ public class ProcessDaoImpl implements ProcessDao {
         }
 
         String query = "INSERT INTO " + tableName + " (" + columnName + ") VALUES (" + value + ")";
-        jdbcTemplate.update(query, params);
+        try {
+            Integer i = jdbcTemplate.update(query, params);
+            return i.toString();
+        } catch (DataAccessException e) {
+            return e.getMessage();
+        }
     }
 
-    public void updateData(String tableName, Map<String, Object> data, List<String> primaryKey) {
+    public String updateData(String tableName, Map<String, Object> data, List<String> primaryKey) {
         String columnValue = "";
         String conditionQuery = "";
         int indexKey = 0;
@@ -416,13 +432,24 @@ public class ProcessDaoImpl implements ProcessDao {
             }
         }
         String query = "UPDATE " + tableName + " SET " + columnValue + " WHERE " + conditionQuery;
-        jdbcTemplate.update(query, params);
+        try {
+            Integer i = jdbcTemplate.update(query, params);
+            return i.toString();
+        } catch (DataAccessException e) {
+            return e.getMessage();
+        }
     }
 
     public List<String> getPrimaryKey(String tableName) {
         Optional<TableAlias> ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_T, "table", tableName);
         if (ta.isEmpty()) {
             ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_T, "alias", tableName);
+        }
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_M, "table", tableName);
+        }
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_M, "alias", tableName);
         }
         TableAlias tableAlias = ta.get();
         List<String> primaryKey = tableAlias.getPrimaryKeyList();

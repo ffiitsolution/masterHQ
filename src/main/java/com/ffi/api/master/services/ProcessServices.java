@@ -32,7 +32,7 @@ public class ProcessServices {
         return dao.getDataMaster(tableName,date, outletId);
     }
     
-    public List insertData(String tableName, List<Map<String,Object>> data, String outletId){
+    public Map<String, Object> insertDataMaster(String tableName, List<Map<String,Object>> data, String outletId){
         return dao.insertDataMaster(tableName,data, outletId);
     }
     ////////////Done//////////////////////

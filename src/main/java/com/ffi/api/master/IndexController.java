@@ -81,7 +81,7 @@ public class IndexController {
 
         ResponseMessage rm = new ResponseMessage();
         try {
-            rm.setItem(processServices.getDataMaster(param, dateCopy,outletId));
+            rm.setItem(processServices.getDataMaster(param, dateCopy, outletId));
             rm.setSuccess(true);
             rm.setMessage("Get Data Table Successfuly " + param + " For " + dateCopy);
         } catch (Exception e) {
@@ -94,27 +94,42 @@ public class IndexController {
     @RequestMapping(value = "/receive-data")
     public @ResponseBody
     ResponseMessage insertDataMaster(@RequestBody Map<String, Object> param) throws IOException, Exception {
-        String outletId = param.get("outletId") != null ? param.get("outletId").toString() : null ;
+        String outletId = param.get("outletId") != null ? param.get("outletId").toString() : null;
         String tableName = param.get("tableName").toString();
         List<Map<String, Object>> bodyData = (List<Map<String, Object>>) param.get("data");
+        List errors = new ArrayList();
+        List response = new ArrayList();
         ResponseMessage rm = new ResponseMessage();
         rm.setItem(new ArrayList());
         try {
             if (!bodyData.isEmpty()) {
-                List list = processServices.insertData(tableName, bodyData, outletId);
-                System.err.println("insertDataMaster: " + list);
-                Integer d = 0;
-                if( list.get(0) instanceof Integer integer){
-                    d = integer;
+                Map<String, Object> resp = processServices.insertDataMaster(tableName, bodyData, outletId);
+                System.err.println("insertDataMaster: " + tableName + ": " + resp);
+                if (resp.containsKey("errors") && resp.get("errors") instanceof List) {
+                    List err = ((List) resp.get("errors"));
+                    if (!err.isEmpty()) {
+                        errors = err;
+                    }
                 }
-                if (d > 0) {
+                Integer d = 0;
+                if (resp.containsKey("total") && resp.get("total") instanceof Number) {
+                    int total = ((Number) resp.get("total")).intValue();
+                    if (total > 0) {
+                        d = total;
+                    }
+                }
+                if (d > 0 && errors.isEmpty()) {
                     rm.setSuccess(true);
                     rm.setMessage("Insert Data for table " + tableName + " Success");
-                    rm.setItem(list);
+                } else if (d > 0 && !errors.isEmpty()) {
+                    rm.setSuccess(true);
+                    rm.setMessage("Insert Data for table " + tableName + " Success Partially");
                 } else {
                     rm.setSuccess(false);
                     rm.setMessage("Insert Data for table " + tableName + " Failed");
                 }
+                response.add(resp);
+                rm.setItem(response);
             } else {
                 rm.setSuccess(true);
                 rm.setMessage("No Data to Insert for table " + tableName);

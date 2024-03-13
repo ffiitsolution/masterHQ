@@ -18,7 +18,7 @@ public interface ProcessDao {
 
     /////////////// new method from Lukas 17-10-2023 ////////////////////////////
     public List<Map<String, Object>> getDataMaster(String tableName, String date, String outletId);
-    public List insertDataMaster(String tableName, List<Map<String, Object>> data, String outletId);
+    public Map<String, Object> insertDataMaster(String tableName, List<Map<String, Object>> data, String outletId);
     /////////////// DONE ////////////////////////////
 
 }
