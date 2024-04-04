@@ -1519,5 +1519,18 @@
         "process": "TRUE",
         "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
+    },
+    {
+        "data": "T",
+        "table": "T_POS_ACTION",
+        "alias": "Riwayat Aksi POS",
+        "primaryKeys": "REGION_CODE,OUTLET_CODE,POS_CODE,CASHIER_CODE,BILL_NO",
+        "dateColumn": "DATE_UPD",
+        "hasOutletCode": "TRUE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "6-Mar-2024",
+        "timeUpd": "145246"
     }
 ]
