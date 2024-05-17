@@ -291,19 +291,19 @@ public class ProcessDaoImpl implements ProcessDao {
             conditionText = " WHERE TRANS_DATE = '" + date + "'";
         }
         String checkOutletCode = "SELECT COUNT(column_name) FROM all_tab_columns WHERE table_name = '" + tableName + "' AND column_name = 'OUTLET_CODE'";
-        List listCheckOutletCode = jdbcTemplate.query(checkOutletCode, new HashMap(), new DynamicRowMapper());
-        if (!listCheckOutletCode.isEmpty()) {
+        int count = jdbcTemplate.queryForObject(checkOutletCode, new HashMap(), Integer.class);
+        if (count > 0) {
             conditionText += " AND OUTLET_CODE = '" + outletId + "' ";
         }
         String query = switch (tableName) {
             case "M_PRICE" ->
-                "SELECT * FROM M_PRICE WHERE DATE_UPD = '" + date + "' AND PRICE_TYPE_CODE IN (SELECT DISTINCT PRICE_TYPE_CODE FROM M_OUTLET_PRICE mop WHERE PRICE_TYPE_CODE <> '_' AND OUTLET_CODE IN (SELECT DISTINCT OUTLET_CODE FROM T_POS_DAY tpd))";
+                "SELECT * FROM M_PRICE WHERE DATE_UPD = '" + date + "' AND PRICE_TYPE_CODE IN (SELECT DISTINCT PRICE_TYPE_CODE FROM M_OUTLET_PRICE mop WHERE PRICE_TYPE_CODE <> '_' AND OUTLET_CODE = '" + outletId + "')";
             default ->
                 "Select * From " + tableName + conditionText ;
         };
         String checkTimeUpd = "SELECT COUNT(column_name) FROM all_tab_columns WHERE table_name = '" + tableName + "' AND column_name = 'TIME_UPD'";
-        List list = jdbcTemplate.query(checkTimeUpd, new HashMap(), new DynamicRowMapper());
-        if (!list.isEmpty()) {
+        int countList = jdbcTemplate.queryForObject(checkTimeUpd, new HashMap(), Integer.class);
+        if (countList > 0) {
             query += " ORDER BY TIME_UPD DESC";
         }
         return query;
