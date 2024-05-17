@@ -196,8 +196,7 @@ public class ProcessDaoImpl implements ProcessDao {
     // ========================== NEW Method from Lukas 17-10-2023 ======================
     @Override
     public List<Map<String, Object>> getDataMaster(String tableName, String date, String outletId) {
-        String dateMaster = date;
-        String query = customQuery(tableName, dateMaster);
+        String query = customQuery(tableName, date, outletId);
         Map prm = new HashMap();
         System.out.println("Outlet " + outletId + " Query to Database Server : " + query);
         List<Map<String, Object>> list = jdbcTemplate.query(query, prm, (ResultSet rs, int index) -> convertObject(rs));
@@ -284,18 +283,23 @@ public class ProcessDaoImpl implements ProcessDao {
         return result;
     }
 
-    public String customQuery(String tableName, String date) {
+    public String customQuery(String tableName, String date, String outletId) {
         String conditionText = "";
         if (tableName.charAt(0) == 'M') {
-            conditionText = " WHERE DATE_UPD = '";
+            conditionText = " WHERE DATE_UPD = '" + date + "'";
         } else if (tableName.charAt(0) == 'T') {
-            conditionText = " WHERE TRANS_DATE = '";
+            conditionText = " WHERE TRANS_DATE = '" + date + "'";
+        }
+        String checkOutletCode = "SELECT COUNT(column_name) FROM all_tab_columns WHERE table_name = '" + tableName + "' AND column_name = 'OUTLET_CODE'";
+        List listCheckOutletCode = jdbcTemplate.query(checkOutletCode, new HashMap(), new DynamicRowMapper());
+        if (!listCheckOutletCode.isEmpty()) {
+            conditionText += " AND OUTLET_CODE = '" + outletId + "' ";
         }
         String query = switch (tableName) {
             case "M_PRICE" ->
                 "SELECT * FROM M_PRICE WHERE DATE_UPD = '" + date + "' AND PRICE_TYPE_CODE IN (SELECT DISTINCT PRICE_TYPE_CODE FROM M_OUTLET_PRICE mop WHERE PRICE_TYPE_CODE <> '_' AND OUTLET_CODE IN (SELECT DISTINCT OUTLET_CODE FROM T_POS_DAY tpd))";
             default ->
-                "Select * From " + tableName + conditionText + date + "'";
+                "Select * From " + tableName + conditionText ;
         };
         String checkTimeUpd = "SELECT COUNT(column_name) FROM all_tab_columns WHERE table_name = '" + tableName + "' AND column_name = 'TIME_UPD'";
         List list = jdbcTemplate.query(checkTimeUpd, new HashMap(), new DynamicRowMapper());

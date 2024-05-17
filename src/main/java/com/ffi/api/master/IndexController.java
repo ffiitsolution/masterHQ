@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,9 @@ public class IndexController {
 
     @Autowired
     ProcessServices processServices;
+    
+    @Value("${spring.datasource.url}")
+    private String urlDb;
 
     @RequestMapping(value = "/halo")
     public @ResponseBody
@@ -73,7 +77,7 @@ public class IndexController {
     //============== new method from LUKAS 17-10-2023 ===============
     @RequestMapping(value = "/get-data")
     public @ResponseBody
-    ResponseMessage copyPaste(@RequestParam String param, @RequestParam(required = false) String date, @RequestParam(required = false) String outletId) throws IOException, Exception {
+    ResponseMessage copyPaste(@RequestParam String param, @RequestParam(required = true) String date, @RequestParam(required = true) String outletId) throws IOException, Exception {
         String dateCopy = date;
         if (date == null) {
             dateCopy = new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime());
@@ -81,6 +85,7 @@ public class IndexController {
 
         ResponseMessage rm = new ResponseMessage();
         try {
+            System.out.println("param: " + param);
             rm.setItem(processServices.getDataMaster(param, dateCopy, outletId));
             rm.setSuccess(true);
             rm.setMessage("Get Data Table Successfuly " + param + " For " + dateCopy);
@@ -101,6 +106,7 @@ public class IndexController {
         List response = new ArrayList();
         ResponseMessage rm = new ResponseMessage();
         rm.setItem(new ArrayList());
+        System.out.println("urlDb: " + urlDb);
         try {
             if (!bodyData.isEmpty()) {
                 Map<String, Object> resp = processServices.insertDataMaster(tableName, bodyData, outletId);
