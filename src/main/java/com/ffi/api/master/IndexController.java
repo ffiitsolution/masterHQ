@@ -159,7 +159,7 @@ public class IndexController {
 
         ResponseMessage rm = new ResponseMessage();
         try {
-            int result = processServices.execVmByOctd(transDate, outletId);
+            int result = processServices.execVmByOctd( outletId, transDate);
             rm.setItem(new ArrayList());
             rm.setSuccess(result > 0);
             rm.setMessage("execVmByOctd " + (result > 0 ? "Success" : "Error") + ": " + result + " rows affected.");
