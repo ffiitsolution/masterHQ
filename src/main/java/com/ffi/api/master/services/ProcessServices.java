@@ -37,4 +37,8 @@ public class ProcessServices {
     }
     ////////////Done//////////////////////
 
+    // ========================== NEW Method from M Joko 22-5-2024 ======================
+    public Integer execVmByOctd(String outletCode, String transDate) {
+        return dao.execVmByOctd(outletCode, transDate);
+    }
 }

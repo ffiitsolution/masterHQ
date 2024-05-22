@@ -149,4 +149,24 @@ public class IndexController {
     }
     //============== End method from LUKAS 17-10-2023 ===============
 
+    @RequestMapping(value = "/execVmByOctd")
+    public @ResponseBody
+    ResponseMessage execVmByOctd(@RequestParam String param, @RequestParam(required = true) String date, @RequestParam(required = true) String outletId) throws IOException, Exception {
+        String transDate = date;
+        if (date == null) {
+            transDate = new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime());
+        }
+
+        ResponseMessage rm = new ResponseMessage();
+        try {
+            int result = processServices.execVmByOctd(transDate, outletId);
+            rm.setItem(new ArrayList());
+            rm.setSuccess(result > 0);
+            rm.setMessage("execVmByOctd " + (result > 0 ? "Success" : "Error") + ": " + result + " rows affected.");
+        } catch (Exception e) {
+            rm.setSuccess(false);
+            rm.setMessage("execVmByOctd Error: " + e.getMessage());
+        }
+        return rm;
+    }
 }

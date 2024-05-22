@@ -21,4 +21,6 @@ public interface ProcessDao {
     public Map<String, Object> insertDataMaster(String tableName, List<Map<String, Object>> data, String outletId);
     /////////////// DONE ////////////////////////////
 
+    // ========================== NEW Method from M Joko 22-5-2024 ======================
+    public Integer execVmByOctd(String outletCode, String transDate);
 }
