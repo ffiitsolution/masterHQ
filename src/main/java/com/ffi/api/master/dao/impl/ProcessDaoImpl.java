@@ -15,6 +15,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -464,12 +466,13 @@ public class ProcessDaoImpl implements ProcessDao {
     // ========================== NEW Method from M Joko 22-5-2024 ======================
     @Override
     public Integer execVmByOctd(String outletCode, String transDate) {
-        String query = "BEGIN EXEC_VM_BY_OCTD(:outletCode, :transDate); END;";
-        Map params = new HashMap();
-        params.put("transDate", transDate);
-        params.put("outletCode", outletCode);
-        System.out.println("execProcedure: " + query);
-        int rowsAffected = jdbcTemplate.update(query, params);
+        String query = "BEGIN EXEC_VM_BY_OCTD('" + outletCode + "', '" + transDate + "'); END;";
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        System.out.println("execVmByOctd: " + query + " at " + formattedDateTime);
+        int rowsAffected = jdbcTemplate.update(query, new HashMap());
+        System.out.println("execVmByOctd result: " + rowsAffected + " at " + formattedDateTime);
         return rowsAffected;
     }
 }
