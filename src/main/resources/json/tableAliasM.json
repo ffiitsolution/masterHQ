@@ -1,136 +1,6 @@
 [
     {
         "data": "M",
-        "table": "HIST_RETURN",
-        "alias": "Data Hist Return",
-        "primaryKeys": "",
-        "dateColumn": "TGL_TERIMA",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "KODE_GROUP_ITEM",
-        "alias": "Data Kode Group Item",
-        "primaryKeys": "GROUP_ITEM_CODE,ITEM_CODE",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "KODE_PERSAMAAN",
-        "alias": "Data Kode Persamaan",
-        "primaryKeys": "ITEM_CODE,ITEM_CODE2",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "KODE_RECIPE_DETAIL",
-        "alias": "Data Kode Recipe Detail",
-        "primaryKeys": "ITEM_CODE,ITEM_CODE2",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_AGENT",
-        "alias": "Data Master Agent",
-        "primaryKeys": "AGENT_CODE,OUTLET_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_CDD",
-        "alias": "Data Master Cdd",
-        "primaryKeys": "MENU_ITEM_CODE",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_COUNTER",
-        "alias": "Data Master Counter",
-        "primaryKeys": "MONTH,OUTLET_CODE,TRANS_TYPE,YEAR",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_CUSTOMER",
-        "alias": "Data Master Customer",
-        "primaryKeys": "REGION_CODE,OUTLET_CODE,CUSTOMER_PHONE_NO",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_CUSTOMER_MENU",
-        "alias": "Data Master Customer Menu",
-        "primaryKeys": "BILL_NO,ITEM_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_CUSTOMER_PIC",
-        "alias": "Data Master Customer Pic",
-        "primaryKeys": "CUSTOMER_PHONE_NO,SEQ_NO",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
         "table": "M_DELETED",
         "alias": "Data Master Deleted",
         "primaryKeys": "OUTLET_CODE,SEQ,TABLE_CODE",
@@ -139,20 +9,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_DELIVERY_TIME",
-        "alias": "Data Master Delivery Time",
-        "primaryKeys": "AREA,OUTLET_CODE,REGION_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -165,7 +22,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -178,7 +35,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -191,7 +48,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -204,7 +61,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -217,85 +74,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_HOLIDAY",
-        "alias": "Data Master Holiday",
-        "primaryKeys": "HOLIDAY_DATE,OUTLET_CODE,REGION_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_COFFEE",
-        "alias": "Data Master Item Coffee",
-        "primaryKeys": "MENU_ITEM_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_COST",
-        "alias": "Data Master Item Cost",
-        "primaryKeys": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_LOG",
-        "alias": "Data Master Item Log",
-        "primaryKeys": "ITEM_CODE,OUTLET_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_NON_AKTIF",
-        "alias": "Data Master Item Non Aktif",
-        "primaryKeys": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_SUPPLIER_UPD_VND",
-        "alias": "Data Master Item Supplier Upd Vnd",
-        "primaryKeys": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "FALSE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -308,7 +87,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -321,7 +100,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -334,20 +113,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MENU_ITEM_COMP",
-        "alias": "Data Master Menu Item Comp",
-        "primaryKeys": "ITEM_CODE,MENU_ITEM_CODE,ORDER_TYPE,OUTLET_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -360,7 +126,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -373,7 +139,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -386,7 +152,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -399,46 +165,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MODIFIER_PRICE_SCH",
-        "alias": "Data Master Modifier Price Sch",
-        "primaryKeys": "EFFECTIVE_DATE,MODIFIER_GROUP_CODE,MODIFIER_ITEM_CODE,PRICE_TYPE_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MPCS_DETAIL",
-        "alias": "Data Master Mpcs Detail",
-        "primaryKeys": "FRYER_TYPE,FRYER_TYPE_SEQ,OUTLET_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MPCS_DETAIL_HIST",
-        "alias": "Data Master Mpcs Detail Hist",
-        "primaryKeys": "DATE_UPD,FRYER_TYPE,FRYER_TYPE_SEQ,FRYER_TYPE_SEQ_CNT,OUTLET_CODE,TIME_UPD",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -451,20 +178,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_NPWP",
-        "alias": "Data Master Npwp",
-        "primaryKeys": "OUTLET_CODE",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -477,7 +191,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -490,7 +204,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -503,59 +217,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OUTLET_BUCKET",
-        "alias": "Data Master Outlet Bucket",
-        "primaryKeys": "OUTLET_CODE,REGION_CODE",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OUTLET_DETAIL",
-        "alias": "Data Master Outlet Detail",
-        "primaryKeys": "CHILD_OUTLET,PARENT_OUTLET",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OUTLET_FTP_HIST",
-        "alias": "Data Master Outlet Ftp Hist",
-        "primaryKeys": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OUTLET_MENU",
-        "alias": "Data Master Outlet Menu",
-        "primaryKeys": "MENU_ITEM_CODE,OUTLET_CODE,TRANS_CODE",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -568,20 +230,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OUTLET_SPECIAL_PRICE",
-        "alias": "Data Master Outlet Special Price",
-        "primaryKeys": "DATE_END,DATE_START,MENU_ITEM_CODE,OUTLET_CODE,TIME_END,TIME_START",
-        "dateColumn": "DATE_START",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -594,7 +243,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -607,20 +256,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_PHONE_AREA",
-        "alias": "Data Master Phone Area",
-        "primaryKeys": "AREA_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -633,137 +269,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_POS_STAFF",
-        "alias": "Data Master Pos Staff",
-        "primaryKeys": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_PRODUCT_HIST",
-        "alias": "Data Master Product Hist",
-        "primaryKeys": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SPECIAL_PRICE",
-        "alias": "Data Master Special Price",
-        "primaryKeys": "DATE_END,DATE_START,MENU_ITEM_CODE,OUTLET_CODE,PRICE_TYPE_CODE,TIME_END,TIME_START",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SPECIAL_PRICE_DAY",
-        "alias": "Data Master Special Price Day",
-        "primaryKeys": "DATE_END,DATE_START,DAY_OF_WEEK,MENU_ITEM_CODE,TIME_END,TIME_START",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SPECIAL_PRICE_LIMIT",
-        "alias": "Data Master Special Price Limit",
-        "primaryKeys": "DATE_END,DATE_START,MENU_ITEM_CODE,ORDER_TYPE,TIME_END,TIME_START",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_STAFF",
-        "alias": "Data Master Staff",
-        "primaryKeys": "OUTLET_CODE,REGION_CODE,STAFF_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SUB_ITEM",
-        "alias": "Data Master Sub Item",
-        "primaryKeys": "ITEM_CODE,SUB_ITEM",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SUPPLIER_UPD_VND",
-        "alias": "Data Master Supplier Upd Vnd",
-        "primaryKeys": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "MOVEMENT",
-        "alias": "Data Master Movement",
-        "primaryKeys": "",
-        "dateColumn": "DATE_TRANS",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "SR_OUTLET",
-        "alias": "Data Master Sr Outlet",
-        "primaryKeys": "OUTLET_CODE,PERIODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -776,7 +282,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -789,7 +295,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -802,7 +308,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -815,7 +321,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -828,33 +334,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SUPPLIER",
-        "alias": "Master Supplier",
-        "primaryKeys": "CD_SUPPLIER",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_SUPPLIER",
-        "alias": "Master Item Supplier",
-        "primaryKeys": "CD_SUPPLIER,ITEM_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -867,7 +347,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -880,7 +360,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -893,7 +373,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -906,7 +386,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -919,7 +399,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -932,85 +412,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MENU",
-        "alias": "Master Kelompok Menu",
-        "primaryKeys": "APPL_ID,MENU_ID",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MENUDTL",
-        "alias": "Master Kelompok Menu Detail",
-        "primaryKeys": "MENU_ID,TYPE_ID",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MENUGRP",
-        "alias": "Master Kelompok Menu Group",
-        "primaryKeys": "APPL_ID,GROUP_ID,MENU_ID",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OPNAME_TMPL_HEADER",
-        "alias": "Master Stok Opname",
-        "primaryKeys": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OPNAME_TMPL_DETAIL",
-        "alias": "Master Item Stok Opname",
-        "primaryKeys": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_PHONE_AREA",
-        "alias": "Master Phone Area",
-        "primaryKeys": "AREA_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -1023,7 +425,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -1036,7 +438,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
@@ -1049,163 +451,20 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     },
     {
         "data": "M",
-        "table": "M_CDD",
-        "alias": "Master CD",
-        "primaryKeys": "MENU_ITEM_CODE",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_COFFEE",
-        "alias": "Master Item Coffee",
-        "primaryKeys": "MENU_ITEM_CODE",
+        "table": "M_ITEM_COST",
+        "alias": "Master Item Cost",
+        "primaryKeys": "OUTLET_CODE,ITEM_CODE",
         "dateColumn": "DATE_UPD",
         "hasOutletCode": "FALSE",
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_NON_AKTIF",
-        "alias": "Master Item Nonaktif",
-        "primaryKeys": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_MODIFIER_PRICE_SCH",
-        "alias": "Master Modifier harga skedule",
-        "primaryKeys": "EFFECTIVE_DATE,MODIFIER_GROUP_CODE,MODIFIER_ITEM_CODE,PRICE_TYPE_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_PRICE_SCHEDULE",
-        "alias": "Master Harga Sekedul",
-        "primaryKeys": "EFFECTIVE_DATE,MENU_ITEM_CODE,PRICE_TYPE_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SALES_RECIPE_CONV",
-        "alias": "Master Resep konversi",
-        "primaryKeys": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SPECIAL_PRICE_DAY",
-        "alias": "Master Spesial Harga Harian",
-        "primaryKeys": "DATE_END,DATE_START,DAY_OF_WEEK,MENU_ITEM_CODE,TIME_END,TIME_START",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SPECIAL_PRICE_LIMIT",
-        "alias": "Master Spesial Harga Limit",
-        "primaryKeys": "DATE_END,DATE_START,MENU_ITEM_CODE,ORDER_TYPE,TIME_END,TIME_START",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_SUB_ITEM",
-        "alias": "Master Sub Item",
-        "primaryKeys": "ITEM_CODE,SUB_ITEM",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_LEVEL_AKSES_DETAIL",
-        "alias": "Master Akses Level Detail",
-        "primaryKeys": "TYPE_ID,MENU_ID,BRAND,ENV",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_LEVEL_AKSES_HEADER",
-        "alias": "Master Akses Level",
-        "primaryKeys": "GROUP_ID,MENU_ID",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-2024",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OUTLET_FTP_HIST_DTL",
-        "alias": "Data Master Outlet Ftp Hist Detail",
-        "primaryKeys": "TRANS_DATE,TIME_UPD",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "6-Mar-2024",
+        "dateUpd": "22-May-24",
         "timeUpd": "145246"
     }
 ]
