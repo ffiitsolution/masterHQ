@@ -1,19 +1,6 @@
 [
     {
         "data": "M",
-        "table": "M_DELETED",
-        "alias": "Data Master Deleted",
-        "primaryKeys": "OUTLET_CODE,SEQ,TABLE_CODE",
-        "dateColumn": "KEY_3",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "22-May-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
         "table": "M_DISCOUNT_METHOD",
         "alias": "Data Master Discount Method",
         "primaryKeys": "DISCOUNT_METHOD_CODE,OUTLET_CODE,REGION_CODE",
@@ -22,7 +9,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -35,7 +22,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -48,7 +35,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -61,7 +48,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -74,7 +61,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -87,7 +74,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -100,7 +87,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -113,7 +100,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -126,7 +113,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -139,7 +126,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -152,7 +139,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -165,7 +152,20 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
+        "timeUpd": "145246"
+    },
+    {
+        "data": "M",
+        "table": "M_MPCS_DETAIL",
+        "alias": "Data Master Mpcs Detail",
+        "primaryKeys": "FRYER_TYPE,FRYER_TYPE_SEQ,OUTLET_CODE",
+        "dateColumn": "DATE_UPD",
+        "hasOutletCode": "TRUE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -178,46 +178,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OPNAME_TEMPL_DETAIL",
-        "alias": "Data Master Opname Templ Detail",
-        "primaryKeys": "CD_TEMPLATE,ITEM_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "22-May-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OPNAME_TEMPL_HEADER",
-        "alias": "Data Master Opname Templ Header",
-        "primaryKeys": "CD_TEMPLATE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "22-May-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_OUTLET",
-        "alias": "Data Master Outlet",
-        "primaryKeys": "OUTLET_CODE,REGION_CODE",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -230,7 +191,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -243,7 +204,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -256,20 +217,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_POS",
-        "alias": "Data Master Pos",
-        "primaryKeys": "OUTLET_CODE,POS_CODE,REGION_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -282,7 +230,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -295,7 +243,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -308,7 +256,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -321,7 +269,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -334,7 +282,33 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
+        "timeUpd": "145246"
+    },
+    {
+        "data": "M",
+        "table": "M_SUPPLIER",
+        "alias": "Master Supplier",
+        "primaryKeys": "CD_SUPPLIER",
+        "dateColumn": "DATE_UPD",
+        "hasOutletCode": "FALSE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "6-Mar-2024",
+        "timeUpd": "145246"
+    },
+    {
+        "data": "M",
+        "table": "M_ITEM_SUPPLIER",
+        "alias": "Master Item Supplier",
+        "primaryKeys": "CD_SUPPLIER,ITEM_CODE",
+        "dateColumn": "DATE_UPD",
+        "hasOutletCode": "FALSE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -347,20 +321,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_UOM_CONV",
-        "alias": "Master konversi",
-        "primaryKeys": "FROM_UOM,TO_UOM",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -373,7 +334,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -386,7 +347,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -399,7 +360,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -412,7 +373,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -425,7 +386,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -438,7 +399,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     },
     {
@@ -451,20 +412,7 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "22-May-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "M",
-        "table": "M_ITEM_COST",
-        "alias": "Master Item Cost",
-        "primaryKeys": "OUTLET_CODE,ITEM_CODE",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "TRUE",
-        "dateUpd": "22-May-24",
+        "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
     }
 ]

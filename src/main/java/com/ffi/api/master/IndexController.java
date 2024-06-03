@@ -13,6 +13,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,9 +36,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
+    public String versionBe = "24.06.03a";
+
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     @Autowired
     ProcessServices processServices;
-    
+
     @Value("${spring.datasource.url}")
     private String urlDb;
 
@@ -45,6 +51,8 @@ public class IndexController {
     Map<String, Object> tes() {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("output", "welcome to master");
+        map.put("urlDb", urlDb);
+        map.put("versionBe", versionBe);
         return map;
     }
 
@@ -85,13 +93,14 @@ public class IndexController {
 
         ResponseMessage rm = new ResponseMessage();
         try {
-            System.out.println("param: " + param);
             rm.setItem(processServices.getDataMaster(param, dateCopy, outletId));
             rm.setSuccess(true);
             rm.setMessage("Get Data Table Successfuly " + param + " For " + dateCopy);
+            System.err.println(getDateTimeForLog() + "get-data: " + outletId + ": " + param + ": " + rm.getItem().size() + "rows");
         } catch (Exception e) {
             rm.setSuccess(false);
             rm.setMessage("Get Data Table " + param + " For " + dateCopy + " Error : " + e.getMessage());
+            System.err.println(getDateTimeForLog() + "get-data error: " + outletId + ": " + param + ": " + e.getMessage());
         }
         return rm;
     }
@@ -106,11 +115,10 @@ public class IndexController {
         List response = new ArrayList();
         ResponseMessage rm = new ResponseMessage();
         rm.setItem(new ArrayList());
-        System.out.println("urlDb: " + urlDb);
         try {
             if (!bodyData.isEmpty()) {
                 Map<String, Object> resp = processServices.insertDataMaster(tableName, bodyData, outletId);
-                System.err.println("insertDataMaster: " + tableName + ": " + resp);
+                System.err.println(getDateTimeForLog() + "receive-data: " + outletId + ": " + tableName + ": " + resp);
                 if (resp.containsKey("errors") && resp.get("errors") instanceof List) {
                     List err = ((List) resp.get("errors"));
                     if (!err.isEmpty()) {
@@ -142,6 +150,7 @@ public class IndexController {
             }
 
         } catch (Exception e) {
+            System.err.println(getDateTimeForLog() + "receive-data error: " + outletId + ": " + tableName + ": " + e.getMessage());
             rm.setSuccess(false);
             rm.setMessage("Insert Data Table " + tableName + " Error : " + e.getMessage());
         }
@@ -159,14 +168,20 @@ public class IndexController {
 
         ResponseMessage rm = new ResponseMessage();
         try {
-            int result = processServices.execVmByOctd( outletId, transDate);
+            int result = processServices.execVmByOctd(outletId, transDate);
             rm.setItem(new ArrayList());
             rm.setSuccess(result > 0);
             rm.setMessage("execVmByOctd " + (result > 0 ? "Success" : "Error") + ": " + result + " rows affected.");
+            System.err.println(getDateTimeForLog() + "execVmByOctd: " + outletId + ": " + (result > 0));
         } catch (Exception e) {
+            System.err.println(getDateTimeForLog() + "execVmByOctd error: " + outletId + ": " + e.getMessage());
             rm.setSuccess(false);
             rm.setMessage("execVmByOctd Error: " + e.getMessage());
         }
         return rm;
+    }
+
+    public String getDateTimeForLog() {
+        return LocalDateTime.now().format(dateTimeFormatter) + " - ";
     }
 }
