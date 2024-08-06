@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ffi.api.master.services;
 
 import com.ffi.api.master.dao.ProcessDao;
@@ -40,5 +36,13 @@ public class ProcessServices {
     // ========================== NEW Method from M Joko 22-5-2024 ======================
     public Integer execVmByOctd(String outletCode, String transDate) {
         return dao.execVmByOctd(outletCode, transDate);
+    }
+
+    // ========================== NEW Method from M Joko 9-7-2024 ======================
+    public List<Map<String, Object>> checkAllowTakeMaster(Map<String, Object> params) {
+        return dao.checkAllowTakeMaster(params);
+    }
+    public Map<String, Object> updateMSyncDetail(Map<String, Object> params) {
+        return dao.updateMSyncDetail(params);
     }
 }

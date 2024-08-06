@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.ffi.api.master.dao;
 
 import com.google.gson.JsonObject;
@@ -23,4 +19,7 @@ public interface ProcessDao {
 
     // ========================== NEW Method from M Joko 22-5-2024 ======================
     public Integer execVmByOctd(String outletCode, String transDate);
+    
+    public List<Map<String, Object>> checkAllowTakeMaster(Map<String, Object> params);
+    public Map<String, Object> updateMSyncDetail(Map<String, Object> params);
 }

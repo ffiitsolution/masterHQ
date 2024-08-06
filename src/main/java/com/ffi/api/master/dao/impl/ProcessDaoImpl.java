@@ -284,7 +284,6 @@ public class ProcessDaoImpl implements ProcessDao {
 
 //        System.out.println("Total Update Data Outlet " + outletId + " " + tableName + " : " + totalUpdateRow + " Row ");
 //        System.out.println("Total Insert Data Outlet " + outletId + " " + tableName + " : " + totalInsertRow + " Row ");
-
         return result;
     }
 
@@ -446,6 +445,9 @@ public class ProcessDaoImpl implements ProcessDao {
         for (String key : data.keySet()) {
             if (key.equalsIgnoreCase("DATE_UPD") && (tableName.equalsIgnoreCase("T_STOCK_CARD") || tableName.equalsIgnoreCase("T_STOCK_CARD_DETAIL"))) {
                 columnValue += key + "= TO_DATE( :" + key + ", 'DD-MON-YYYY HH24:MI:SS')";
+            } else if (key.equalsIgnoreCase("DATE_UPD")) {
+                // do nothing, dont update the DATE_UPD
+                // added 6 Aug 2024 to handle partition error on HQ
             } else {
                 columnValue += key + "= :" + key + "";
             }
@@ -525,6 +527,45 @@ public class ProcessDaoImpl implements ProcessDao {
         int rowsAffected = jdbcTemplate.update(query, new HashMap());
         System.out.println(getDateTimeForLog() + "execVmByOctd result: " + rowsAffected + " at " + formattedDateTime);
         return rowsAffected;
+    }
+
+    @Override
+    public List<Map<String, Object>> checkAllowTakeMaster(Map<String, Object> params) {
+        String qry = "SELECT * FROM M_SYNC_UPDATE WHERE DATE_UPD = TO_DATE(:transDate, 'YYYY-MM-DD') AND STATUS = 'A'";
+        List<Map<String, Object>> list = jdbcTemplate.query(qry, params, new DynamicRowMapper());
+        return list;
+    }
+
+    @Override
+    public Map<String, Object> updateMSyncDetail(Map<String, Object> params) {
+        String qry = """
+            MERGE INTO M_SYNC_UPD_MASTER_DTL target
+            USING (
+              SELECT :syncId AS SYNC_ID, :outletCode AS OUTLET_CODE, :description AS DESCRIPTION, 
+                     :total AS TOTAL, :remark AS REMARK, :status AS STATUS, 
+                     :dateUpd AS DATE_UPD, TO_CHAR(SYSDATE, 'HHMISS') AS TIME_UPD, 
+                     :userUpd AS USER_UPD, :versions AS VERSIONS
+              FROM DUAL
+            ) source
+            ON (target.OUTLET_CODE = source.OUTLET_CODE AND target.DESCRIPTION = source.DESCRIPTION AND target.DATE_UPD = source.DATE_UPD)
+            WHEN MATCHED THEN
+              UPDATE SET 
+                SYNC_ID = source.SYNC_ID,
+                TOTAL = source.TOTAL,
+                REMARK = source.REMARK,
+                STATUS = source.STATUS,
+                TIME_UPD = source.TIME_UPD,
+                USER_UPD = source.USER_UPD,
+                VERSIONS = source.VERSIONS
+            WHEN NOT MATCHED THEN
+              INSERT (SYNC_ID, OUTLET_CODE, DESCRIPTION, TOTAL, REMARK, STATUS, DATE_UPD, TIME_UPD, USER_UPD, VERSIONS)
+              VALUES (source.SYNC_ID, source.OUTLET_CODE, source.DESCRIPTION, source.TOTAL, source.REMARK, source.STATUS, source.DATE_UPD, source.TIME_UPD, source.USER_UPD, source.VERSIONS)
+                     """;
+        Integer res = jdbcTemplate.update(qry, params);
+        Map p = new HashMap();
+        p.put("success", res > 0);
+        p.put("message", res);
+        return p;
     }
 
     public String getDateTimeForLog() {

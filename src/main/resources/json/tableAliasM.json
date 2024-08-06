@@ -414,5 +414,18 @@
         "process": "TRUE",
         "dateUpd": "6-Mar-2024",
         "timeUpd": "145246"
+    },
+    {
+        "data": "M",
+        "table": "M_ITEM_COST",
+        "alias": "Master Item Cost",
+        "primaryKeys": "OUTLET_CODE,ITEM_CODE",
+        "dateColumn": "DATE_UPD",
+        "hasOutletCode": "TRUE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "6-Mar-2024",
+        "timeUpd": "145246"
     }
 ]

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.ffi.api.master;
 
 import com.ffi.api.master.services.ProcessServices;
@@ -12,17 +8,30 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,9 +45,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    public String versionBe = "24.06.03a";
-
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    @Autowired
+    Constant constant;
 
     @Autowired
     ProcessServices processServices;
@@ -46,13 +56,21 @@ public class IndexController {
     @Value("${spring.datasource.url}")
     private String urlDb;
 
+    @Value("${server.port}")
+    String port;
+
+    @Value("${server.servlet.context-path}")
+    String path;
+
     @RequestMapping(value = "/halo")
     public @ResponseBody
     Map<String, Object> tes() {
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         map.put("output", "welcome to master");
-        map.put("urlDb", urlDb);
-        map.put("versionBe", versionBe);
+//        map.put("urlDb", urlDb);
+        map.put("port", port);
+        map.put("path", path);
+        map.put("versionBe", constant.versionBe);
         return map;
     }
 
@@ -179,6 +197,85 @@ public class IndexController {
             rm.setMessage("execVmByOctd Error: " + e.getMessage());
         }
         return rm;
+    }
+
+    @RequestMapping(value = "/check-allow-take-master")
+    public @ResponseBody
+    ResponseMessage checkAllowTakeMaster(@RequestBody Map<String, Object> params) throws IOException, Exception {
+        ResponseMessage rm = new ResponseMessage();
+        try {
+            List<Map<String, Object>> result = processServices.checkAllowTakeMaster(params);
+            rm.setItem(new ArrayList());
+            rm.setSuccess(true);
+            rm.setItem(result);
+            rm.setMessage("OK");
+            System.err.println(getDateTimeForLog() + "checkAllowTakeMaster: " + params.get("outletCode") + " remark: " + params.get("remark") + ": " + (result.size()));
+        } catch (Exception e) {
+            System.err.println(getDateTimeForLog() + "checkAllowTakeMaster error: " + ": " + e.getMessage());
+            rm.setSuccess(false);
+            rm.setMessage("Error: " + e.getMessage());
+        }
+        return rm;
+    }
+
+    @RequestMapping(value = "/update-sync-detail")
+    public @ResponseBody
+    ResponseMessage updateMSyncDetail(@RequestBody Map<String, Object> params) throws IOException, Exception {
+        ResponseMessage rm = new ResponseMessage();
+        try {
+            Map<String, Object> result = processServices.updateMSyncDetail(params);
+            rm.setItem(new ArrayList());
+            rm.setSuccess(true);
+            rm.setMessage("OK");
+            System.err.println(getDateTimeForLog() + "updateMSyncDetail: " + params.get("outletCode") + " remark: " + params.get("remark") + ": " + (result.size()));
+        } catch (Exception e) {
+            System.err.println(getDateTimeForLog() + "updateMSyncDetail error: " + ": " + e.getMessage());
+            rm.setSuccess(false);
+            rm.setMessage("Error: " + e.getMessage());
+        }
+        return rm;
+    }
+
+    @GetMapping("/get-latest-log")
+    public ResponseEntity<?> downloadLatestLogFile(@RequestParam(required = true) String userUpd) {
+        try {
+            Path jarDir = getJarDirectory();
+            Optional<Path> latestLogFile = findLatestLogFile(jarDir);
+
+            System.out.println(getDateTimeForLog() + "downloadLatestLogFile: jarDir: " + jarDir.getParent() + "\\" + jarDir.getFileName());
+            if (latestLogFile.isPresent()) {
+                Path logFile = latestLogFile.get();
+                InputStreamResource resource = new InputStreamResource(Files.newInputStream(logFile));
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + logFile.getFileName());
+                System.out.println(getDateTimeForLog() + "downloadLatestLogFile by " + userUpd + ": " + logFile.getFileName());
+                return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("No log files found.", HttpStatus.NOT_FOUND);
+            }
+        } catch (IOException | URISyntaxException e) {
+            System.err.println(getDateTimeForLog() + "downloadLatestLogFile error: " + ": " + e.getMessage());
+            return new ResponseEntity<>("Error occurred while fetching the log file.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private Path getJarDirectory() throws URISyntaxException {
+        URI jarUri = IndexController.class.getProtectionDomain().getCodeSource().getLocation().toURI();
+        return Paths.get(jarUri).getParent();
+    }
+
+    private Optional<Path> findLatestLogFile(Path directory) throws IOException {
+        return Files.list(directory)
+                .filter(Files::isRegularFile)
+                .filter(p -> p.toString().endsWith(".log"))
+                .max(Comparator.comparingLong(p -> {
+                    try {
+                        return Files.readAttributes(p, BasicFileAttributes.class).lastModifiedTime().toMillis();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }));
     }
 
     public String getDateTimeForLog() {
