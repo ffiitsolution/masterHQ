@@ -1,7 +1,7 @@
 package com.ffi.api.master;
 
+import com.ffi.api.master.model.ResponseMessage;
 import com.ffi.api.master.services.ProcessServices;
-import com.ffi.paging.ResponseMessage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.swagger.annotations.ApiOperation;
@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -27,10 +28,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,6 +66,9 @@ public class IndexController {
 
     @Value("${server.servlet.context-path}")
     String path;
+
+    @Value("${log.dir}")
+    String currentDir;
 
     @RequestMapping(value = "/halo")
     public @ResponseBody
@@ -239,30 +247,29 @@ public class IndexController {
     @GetMapping("/get-latest-log")
     public ResponseEntity<?> downloadLatestLogFile(@RequestParam(required = true) String userUpd) {
         try {
-            Path jarDir = getJarDirectory();
+            if(currentDir == null){
+                return new ResponseEntity<>("Log Dir is null", HttpStatus.BAD_REQUEST);
+            }
+            Path jarDir = Paths.get(currentDir);
+            if(jarDir == null){
+                return new ResponseEntity<>("Log Dir not valid", HttpStatus.BAD_REQUEST);
+            }
             Optional<Path> latestLogFile = findLatestLogFile(jarDir);
-
-            System.out.println(getDateTimeForLog() + "downloadLatestLogFile: jarDir: " + jarDir.getParent() + "\\" + jarDir.getFileName());
             if (latestLogFile.isPresent()) {
                 Path logFile = latestLogFile.get();
                 InputStreamResource resource = new InputStreamResource(Files.newInputStream(logFile));
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + logFile.getFileName());
-                System.out.println(getDateTimeForLog() + "downloadLatestLogFile by " + userUpd + ": " + logFile.getFileName());
+                System.out.println(getDateTimeForLog() + "downloadLatestLogFile by " + userUpd + ": " + jarDir.getParent() + "\\" + logFile.getFileName());
                 return new ResponseEntity<>(resource, headers, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("No log files found.", HttpStatus.NOT_FOUND);
             }
-        } catch (IOException | URISyntaxException e) {
-            System.err.println(getDateTimeForLog() + "downloadLatestLogFile error: " + ": " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println(getDateTimeForLog() + "downloadLatestLogFile error: " + ": " + e.getMessage() + " :: " + Arrays.toString(e.getStackTrace()));
             return new ResponseEntity<>("Error occurred while fetching the log file.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    private Path getJarDirectory() throws URISyntaxException {
-        URI jarUri = IndexController.class.getProtectionDomain().getCodeSource().getLocation().toURI();
-        return Paths.get(jarUri).getParent();
     }
 
     private Optional<Path> findLatestLogFile(Path directory) throws IOException {
