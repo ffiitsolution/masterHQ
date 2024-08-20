@@ -1,7 +1,10 @@
 package com.ffi.api.master;
 
 import com.ffi.api.master.model.ResponseMessage;
+import com.ffi.api.master.model.TableAlias;
 import com.ffi.api.master.services.ProcessServices;
+import com.ffi.api.master.utils.GzipUtility;
+import com.ffi.api.master.utils.TableAliasUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -37,6 +41,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,15 +75,25 @@ public class IndexController {
     @Value("${log.dir}")
     String currentDir;
 
+    @Autowired
+    TableAliasUtil tableAliasUtil;
+
+    @PostConstruct
+    public void init() {
+        constant.startupAt = LocalDateTime.now().format(dateTimeFormatter);
+    }
+
     @RequestMapping(value = "/halo")
     public @ResponseBody
     Map<String, Object> tes() {
         Map<String, Object> map = new HashMap<>();
         map.put("output", "welcome to master");
-//        map.put("urlDb", urlDb);
+        map.put("urlDb", urlDb);
         map.put("port", port);
         map.put("path", path);
         map.put("versionBe", constant.versionBe);
+        map.put("boffiTime", LocalDateTime.now().format(dateTimeFormatter));
+        map.put("startupAt", constant.startupAt);
         return map;
     }
 
@@ -122,7 +137,7 @@ public class IndexController {
             rm.setItem(processServices.getDataMaster(param, dateCopy, outletId));
             rm.setSuccess(true);
             rm.setMessage("Get Data Table Successfuly " + param + " For " + dateCopy);
-            System.err.println(getDateTimeForLog() + "get-data: " + outletId + ": " + param + ": " + rm.getItem().size() + "rows");
+            System.err.println(getDateTimeForLog() + "get-data: " + outletId + ": " + param + ": " + ((List) rm.getItem()).size() + "rows");
         } catch (Exception e) {
             rm.setSuccess(false);
             rm.setMessage("Get Data Table " + param + " For " + dateCopy + " Error : " + e.getMessage());
@@ -247,11 +262,11 @@ public class IndexController {
     @GetMapping("/get-latest-log")
     public ResponseEntity<?> downloadLatestLogFile(@RequestParam(required = true) String userUpd) {
         try {
-            if(currentDir == null){
+            if (currentDir == null) {
                 return new ResponseEntity<>("Log Dir is null", HttpStatus.BAD_REQUEST);
             }
             Path jarDir = Paths.get(currentDir);
-            if(jarDir == null){
+            if (jarDir == null) {
                 return new ResponseEntity<>("Log Dir not valid", HttpStatus.BAD_REQUEST);
             }
             Optional<Path> latestLogFile = findLatestLogFile(jarDir);
@@ -283,6 +298,45 @@ public class IndexController {
                         throw new RuntimeException(e);
                     }
                 }));
+    }
+
+    @PostMapping(value = "/get-data-zipped")
+    public @ResponseBody
+    ResponseEntity<?> getMasterZipped(@RequestBody(required = true) String param) throws IOException {
+        Gson gsn = new Gson();
+        Map<String, Object> balance = gsn.fromJson(param, new TypeToken<Map<String, Object>>() {
+        }.getType());
+
+        ResponseMessage rm = new ResponseMessage();
+        Map<String, Object> dataMaster = new HashMap();
+        String dateCopy = balance.containsKey("date") ? balance.get("date").toString() : null;
+        String outletId = balance.containsKey("outletId") ? balance.get("outletId").toString() : null;
+        if (dateCopy == null || outletId == null) {
+            rm.setSuccess(false);
+            rm.setMessage("Get Data Table For " + dateCopy + " Error: Date and Outlet ID are required.");
+            return GzipUtility.createGzippedResponse(rm);
+        }
+        System.out.println();
+        System.out.println(getDateTimeForLog() + "getMasterZipped started: " + outletId + " - " + dateCopy);
+
+        List<TableAlias> allActiveTable = tableAliasUtil.searchByColumn(TableAliasUtil.TABLE_ALIAS_M, "process", true);
+        List<String> listTable = allActiveTable.stream().map(TableAlias::getTable).toList();
+        try {
+            for (String tableName : listTable) {
+                List l = processServices.getDataMaster(tableName, dateCopy, outletId);
+                if (!l.isEmpty()) {
+                    dataMaster.put(tableName, l);
+                }
+            }
+        } catch (Exception e) {
+            rm.setSuccess(false);
+            rm.setMessage("Get Data Table For " + dateCopy + " Error: " + e.getMessage());
+            System.out.println(getDateTimeForLog() + "getMasterZipped error: " + outletId + ": " + e.getMessage());
+            return GzipUtility.createGzippedResponse(rm);
+        }
+
+        System.out.println(getDateTimeForLog() + "getMasterZipped finished: " + outletId + " - " + dateCopy);
+        return GzipUtility.createGzippedResponse(dataMaster);
     }
 
     public String getDateTimeForLog() {

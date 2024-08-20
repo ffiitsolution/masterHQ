@@ -205,7 +205,7 @@ public class ProcessDaoImpl implements ProcessDao {
         String query = customQuery(tableName, date, outletId);
         Map prm = new HashMap();
         List<Map<String, Object>> list = jdbcTemplate.query(query, prm, (ResultSet rs, int index) -> convertObject(rs, tableName));
-        System.out.println(getDateTimeForLog() + "getDataMaster " + outletId + list.size() + " rows - q: " + query);
+        System.out.println(getDateTimeForLog() + "getDataMaster " + outletId + ": " + list.size() + " rows - q: " + query);
         return list;
     }
 
@@ -303,7 +303,7 @@ public class ProcessDaoImpl implements ProcessDao {
             case "M_PRICE" ->
                 "SELECT * FROM M_PRICE WHERE DATE_UPD = '" + date + "' AND PRICE_TYPE_CODE IN (SELECT DISTINCT PRICE_TYPE_CODE FROM M_OUTLET_PRICE mop WHERE PRICE_TYPE_CODE <> '_' AND OUTLET_CODE = '" + outletId + "')";
             default ->
-                "Select * From " + tableName + conditionText;
+                "SELECT * FROM " + tableName + conditionText;
         };
         String checkTimeUpd = "SELECT COUNT(column_name) FROM all_tab_columns WHERE table_name = '" + tableName + "' AND column_name = 'TIME_UPD'";
         int countList = jdbcTemplate.queryForObject(checkTimeUpd, new HashMap(), Integer.class);

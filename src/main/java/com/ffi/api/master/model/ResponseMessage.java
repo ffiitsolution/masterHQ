@@ -10,12 +10,12 @@ public class ResponseMessage {
 
     private boolean success;
     private String message;
-    private List item;
+    private Object item;
 
     public ResponseMessage() {
     }
 
-    public ResponseMessage(boolean success, String message, List item) {
+    public ResponseMessage(boolean success, String message, Object item) {
         this.success = success;
         this.message = message;
         this.item = item;
@@ -37,11 +37,11 @@ public class ResponseMessage {
         this.message = message;
     }
 
-    public List getItem() {
+    public Object getItem() {
         return item;
     }
 
-    public void setItem(List item) {
+    public void setItem(Object item) {
         this.item = item;
     }
 }
