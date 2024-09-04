@@ -6,11 +6,17 @@ import com.ffi.api.master.services.ProcessServices;
 import com.ffi.api.master.utils.GzipUtility;
 import com.ffi.api.master.utils.TableAliasUtil;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -28,6 +34,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -337,6 +345,76 @@ public class IndexController {
 
         System.out.println(getDateTimeForLog() + "getMasterZipped finished: " + outletId + " - " + dateCopy);
         return GzipUtility.createGzippedResponse(dataMaster);
+    }
+
+    @GetMapping(value = "/download-data-zipped")
+    public @ResponseBody
+    ResponseEntity<?> getMasterJsonZipped(
+            @RequestParam(required = true) String date,
+            @RequestParam(required = true) String outletId) throws IOException {
+
+        ResponseMessage rm = new ResponseMessage();
+        Map<String, Object> dataMaster = new HashMap<>();
+
+        if (date == null || outletId == null) {
+            rm.setSuccess(false);
+            rm.setMessage("Get Data Table For " + date + " Error: Date and Outlet ID are required.");
+            return ResponseEntity.badRequest().body(rm);
+        }
+        String filename = outletId + "_" + date.replaceAll("-", "_").replaceAll(" ", "_");
+
+        System.out.println(getDateTimeForLog() + "getMasterJsonZipped started: " + outletId + " - " + date);
+
+        List<TableAlias> allActiveTable = tableAliasUtil.searchByColumn(TableAliasUtil.TABLE_ALIAS_M, "process", true);
+        List<String> listTable = allActiveTable.stream().map(TableAlias::getTable).toList();
+        try {
+            for (String tableName : listTable) {
+                List<?> l = processServices.getDataMaster(tableName, date, outletId);
+                if (!l.isEmpty()) {
+                    dataMaster.put(tableName, l);
+                }
+            }
+        } catch (Exception e) {
+            rm.setSuccess(false);
+            rm.setMessage("Get Data Table For " + date + " Error: " + e.getMessage());
+            System.out.println(getDateTimeForLog() + "getMasterJsonZipped error: " + outletId + ": " + e.getMessage());
+            return ResponseEntity.status(500).body(rm);
+        }
+
+        File tempJsonFile = File.createTempFile(filename, ".json");
+        File tempZipFile = File.createTempFile(filename, ".zip");
+
+        try ( Writer writer = new FileWriter(tempJsonFile)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(dataMaster, writer);
+        }
+
+        try ( FileOutputStream fos = new FileOutputStream(tempZipFile);  ZipOutputStream zos = new ZipOutputStream(fos);  FileInputStream fis = new FileInputStream(tempJsonFile)) {
+
+            ZipEntry zipEntry = new ZipEntry(tempJsonFile.getName());
+            zos.putNextEntry(zipEntry);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = fis.read(buffer)) >= 0) {
+                zos.write(buffer, 0, length);
+            }
+
+            zos.closeEntry();
+        }
+
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(tempZipFile));
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename + ".impffizip");
+        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
+
+        System.out.println(getDateTimeForLog() + "getMasterJsonZipped finished: " + outletId + " - " + date);
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(tempZipFile.length())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
     }
 
     public String getDateTimeForLog() {
