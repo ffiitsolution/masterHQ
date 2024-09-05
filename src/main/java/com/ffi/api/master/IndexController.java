@@ -181,7 +181,11 @@ public class IndexController {
                         d = total;
                     }
                 }
-                if (d > 0 && errors.isEmpty()) {
+                if (d == 0 && errors.isEmpty()) {
+                    rm.setSuccess(true);
+                    rm.setMessage("Insert Data for table " + tableName + " No data provided");
+                    rm.setItem(bodyData);
+                } else if (d > 0 && errors.isEmpty()) {
                     rm.setSuccess(true);
                     rm.setMessage("Insert Data for table " + tableName + " Success");
                 } else if (d > 0 && !errors.isEmpty()) {
@@ -418,6 +422,6 @@ public class IndexController {
     }
 
     public String getDateTimeForLog() {
-        return LocalDateTime.now().format(dateTimeFormatter) + " - ";
+        return LocalDateTime.now().format(dateTimeFormatter) + " |idxCtrl| ";
     }
 }

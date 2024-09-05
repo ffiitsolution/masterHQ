@@ -430,7 +430,7 @@ public class ProcessDaoImpl implements ProcessDao {
             Integer i = jdbcTemplate.update(query, params);
             return i.toString();
         } catch (DataAccessException e) {
-            System.out.println(getDateTimeForLog() + "insertData: " + query + " error: " + e.getMessage());
+            System.out.println(getDateTimeForLog() + "insertData error: " + e.getMessage());
             return e.getMessage();
         }
     }
@@ -439,15 +439,16 @@ public class ProcessDaoImpl implements ProcessDao {
         String columnValue = "";
         String conditionQuery = "";
         int indexKey = 0;
+        String partitionBy = getPartitionBy(tableName);
 
         Map<String, Object> params = new HashMap<>();
         int counterKey = 0;
         for (String key : data.keySet()) {
-            if (key.equalsIgnoreCase("DATE_UPD") && (tableName.equalsIgnoreCase("T_STOCK_CARD") || tableName.equalsIgnoreCase("T_STOCK_CARD_DETAIL"))) {
-                columnValue += key + "= TO_DATE( :" + key + ", 'DD-MON-YYYY HH24:MI:SS')";
-            } else if (key.equalsIgnoreCase("DATE_UPD")) {
-                // do nothing, dont update the DATE_UPD
-                // added 6 Aug 2024 to handle partition error on HQ
+            if (partitionBy != null && !partitionBy.isBlank() && key.equalsIgnoreCase(partitionBy)) {
+                // 5 Sep 2024 by M Joko M
+                // dont update if key is partitioned
+            } else if (key.equalsIgnoreCase("DATE_UPD") && (tableName.equalsIgnoreCase("T_STOCK_CARD") || tableName.equalsIgnoreCase("T_STOCK_CARD_DETAIL"))) {
+                columnValue += key + "= " + "TO_DATE( :" + key + ", 'DD-MON-YYYY HH24:MI:SS')";
             } else {
                 columnValue += key + "= :" + key + "";
             }
@@ -458,7 +459,6 @@ public class ProcessDaoImpl implements ProcessDao {
                     conditionQuery += " AND ";
                 }
             }
-
             Object temp = data.get(key);
             if (temp == null) {
                 String qryCheckDefault = "SELECT data_type, data_default FROM all_tab_columns WHERE owner = :owner AND table_name = :tableName AND column_name = :columnName AND rownum = 1";
@@ -485,7 +485,10 @@ public class ProcessDaoImpl implements ProcessDao {
                 params.put(key, data.get(key));
             }
             indexKey++;
-            if (indexKey < data.keySet().size()) {
+            if (partitionBy != null && !partitionBy.isBlank() && key.equalsIgnoreCase(partitionBy)) {
+                // 5 Sep 2024 by M Joko M
+                // dont add comma if key is partitioned
+            } else if (indexKey < data.keySet().size()) {
                 columnValue += " ,";
             }
         }
@@ -494,7 +497,9 @@ public class ProcessDaoImpl implements ProcessDao {
             Integer i = jdbcTemplate.update(query, params);
             return i.toString();
         } catch (DataAccessException e) {
-            System.out.println(getDateTimeForLog() + "updateData: " + query + " error: " + e.getMessage());
+            System.out.println(getDateTimeForLog() + "updateData params: " + params);
+            System.out.println(getDateTimeForLog() + "updateData query: " + query);
+            System.out.println(getDateTimeForLog() + "updateData error: " + e.getMessage());
             return e.getMessage();
         }
     }
@@ -513,6 +518,21 @@ public class ProcessDaoImpl implements ProcessDao {
         TableAlias tableAlias = ta.get();
         List<String> primaryKey = tableAlias.getPrimaryKeyList();
         return primaryKey;
+    }
+
+    public String getPartitionBy(String tableName) {
+        Optional<TableAlias> ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_T, "table", tableName);
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_T, "alias", tableName);
+        }
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_M, "table", tableName);
+        }
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_M, "alias", tableName);
+        }
+        TableAlias tableAlias = ta.get();
+        return tableAlias.getPartitionBy();
     }
     // ========================== End Method from Lukas 17-10-2023 ======================
 
@@ -569,6 +589,6 @@ public class ProcessDaoImpl implements ProcessDao {
     }
 
     public String getDateTimeForLog() {
-        return LocalDateTime.now().format(dateTimeFormatter) + " - ";
+        return LocalDateTime.now().format(dateTimeFormatter) + " |prcsDImpl| ";
     }
 }

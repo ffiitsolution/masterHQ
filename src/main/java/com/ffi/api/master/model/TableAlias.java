@@ -37,6 +37,9 @@ public class TableAlias {
     @JsonProperty("dateUpd")
     private String dateUpd;
 
+    @JsonProperty("partitionBy")
+    private String partitionBy;
+
     @JsonProperty("timeUpd")
     private String timeUpd;
 
@@ -73,6 +76,14 @@ public class TableAlias {
 
     public void setDateColumn(String dateColumn) {
         this.dateColumn = dateColumn;
+    }
+
+    public String getPartitionBy() {
+        return partitionBy;
+    }
+
+    public void setPartitionBy(String partitionBy) {
+        this.partitionBy = partitionBy;
     }
 
     public boolean isHasOutletCode() {
