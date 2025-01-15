@@ -4,70 +4,15 @@
         "table": "T_ABSENSI",
         "alias": "Data Transaksi Absensi",
         "primaryKeys": "DAY_SEQ,OUTLET_CODE,SEQ_NO,STAFF_ID",
-        "partitionBy": "",
+        "partitionBy": "DATE_ABSEN",
         "dateColumn": "DATE_ABSEN",
         "hasOutletCode": "TRUE",
         "emptyFirst": "FALSE",
         "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_AGENT_LOG",
-        "alias": "Data Transaksi Agent Log",
-        "primaryKeys": "AGENT_CODE,DATE_UPD,TIME_UPD",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_COPNAME_DETAIL",
-        "alias": "Data Transaksi Copname Detail",
-        "primaryKeys": "ITEM_CODE,OPNAME_NO,OUTLET_CODE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_COPNAME_HEADER",
-        "alias": "Data Transaksi Copname Header",
-        "primaryKeys": "CD_TEMPLATE,OPNAME_NO,OUTLET_CODE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_COST_SCHEDULE",
-        "alias": "Data Transaksi Cost Schedule",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "process": "TRUE",
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "145246",
+        "priority": "3"
     },
     {
         "data": "T",
@@ -80,8 +25,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -94,8 +40,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -108,8 +55,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "3"
     },
     {
         "data": "T",
@@ -122,92 +70,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_KDS_HEADER",
-        "alias": "Data Transaksi Kds Header",
-        "primaryKeys": "BILL_NO,DAY_SEQ,OUTLET_CODE,POS_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_KDS_ITEM",
-        "alias": "Data Transaksi Kds Item",
-        "primaryKeys": "BILL_NO,DAY_SEQ,ITEM_SEQ,OUTLET_CODE,POS_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_KDS_ITEM_DETAIL",
-        "alias": "Data Transaksi Kds Item Detail",
-        "primaryKeys": "BILL_NO,DAY_SEQ,ITEM_DETAIL_SEQ,ITEM_SEQ,OUTLET_CODE,POS_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_KDS_NAME",
-        "alias": "Data Transaksi Kds Name",
-        "primaryKeys": "BILL_NO,OUTLET_CODE,POS_CODE",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_LOC_DETAIL",
-        "alias": "Data Transaksi Loc Detail",
-        "primaryKeys": "ITEM_CODE,OUTLET_CODE,TRANSFER_ID",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_LOC_HEADER",
-        "alias": "Data Transaksi Loc Header",
-        "primaryKeys": "OUTLET_CODE,TRANSFER_ID",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "3"
     },
     {
         "data": "T",
@@ -220,22 +85,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_MPCS_HIST",
-        "alias": "Data Transaksi Mpcs Hist",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "3"
     },
     {
         "data": "T",
@@ -248,8 +100,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -262,8 +115,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -276,8 +130,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -290,22 +145,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_ORDER_HEADER_UPD_VND",
-        "alias": "Data Transaksi Order Header Upd Vnd",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -318,8 +160,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -332,8 +175,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -346,8 +190,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -360,8 +205,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -374,8 +220,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -388,8 +235,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -402,8 +250,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -416,8 +265,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -430,8 +280,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -444,8 +295,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -458,8 +310,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -472,8 +325,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -486,8 +340,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -500,8 +355,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -514,8 +370,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -528,8 +385,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -542,190 +400,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_BUCKET",
-        "alias": "Data Transaksi Pos Bucket",
-        "primaryKeys": "BUCKET_NO,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_BUCKET_DONATE",
-        "alias": "Data Transaksi Pos Bucket Donate",
-        "primaryKeys": "BUCKET_NO,DAY_SEQ,DONATE_METHOD_CODE,DONATE_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_BUCKET_ITEM",
-        "alias": "Data Transaksi Pos Bucket Item",
-        "primaryKeys": "BUCKET_NO,ITEM_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_BUCKET_ITEM_DETAIL",
-        "alias": "Data Transaksi Pos Bucket Item Detail",
-        "primaryKeys": "BUCKET_NO,ITEM_DETAIL_SEQ,ITEM_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_BUCKET_PAYMENT",
-        "alias": "Data Transaksi Pos Bucket Payment",
-        "primaryKeys": "BUCKET_NO,DAY_SEQ,OUTLET_CODE,PAY_SEQ,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_BUCKET_PAYMENT_DETAIL",
-        "alias": "Data Transaksi Pos Bucket Payment Detail",
-        "primaryKeys": "BUCKET_NO,DAY_SEQ,OUTLET_CODE,PAYMENT_METHOD_CODE,POS_CODE,REGION_CODE,VOUCHER_REF_NO",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_CAT",
-        "alias": "Data Transaksi Pos Cat",
-        "primaryKeys": "CAT_NO,OUTLET_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_CAT_ITEM",
-        "alias": "Data Transaksi Pos Cat Item",
-        "primaryKeys": "CAT_NO,ITEM_SEQ,OUTLET_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_CAT_ITEM_DETAIL",
-        "alias": "Data Transaksi Pos Cat Item Detail",
-        "primaryKeys": "CAT_NO,ITEM_DETAIL_SEQ,ITEM_SEQ,OUTLET_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_CATERING",
-        "alias": "Data Transaksi Pos Catering",
-        "primaryKeys": "DAY_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE,TRANS_SEQ",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_CC",
-        "alias": "Data Transaksi Pos Cc",
-        "primaryKeys": "CC_NO,DAY_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_CC_ITEM",
-        "alias": "Data Transaksi Pos Cc Item",
-        "primaryKeys": "CC_NO,DAY_SEQ,ITEM_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_CC_ITEM_DETAIL",
-        "alias": "Data Transaksi Pos Cc Item Detail",
-        "primaryKeys": "CC_NO,DAY_SEQ,ITEM_DETAIL_SEQ,ITEM_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -738,8 +415,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -752,22 +430,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_DAY_SVR",
-        "alias": "Data Transaksi Pos Day Svr",
-        "primaryKeys": "DAY_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -780,22 +445,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_POS_DAY_TRANS_SVR",
-        "alias": "Data Transaksi Pos Day Trans Svr",
-        "primaryKeys": "DAY_SEQ,OUTLET_CODE,POS_CODE,REGION_CODE,TRANS_SEQ",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -808,8 +460,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -822,8 +475,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -836,8 +490,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -850,78 +505,39 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_PROJECTION_HEADER",
-        "alias": "Data Transaksi Projection Header",
-        "primaryKeys": "OUTLET_CODE,PERIOD_MONTH,PERIOD_YEAR",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_PROJECTION_TARGET",
-        "alias": "Data Transaksi Projection Target",
-        "primaryKeys": "OUTLET_CODE,PERIODE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_RECIPE_HIST",
-        "alias": "Data Transaksi Recipe Hist",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
         "table": "T_RECV_DETAIL",
         "alias": "Data Transaksi Recv Detail",
-        "primaryKeys": "ITEM_CODE,ORDER_NO,OUTLET_CODE",
+        "primaryKeys": "ITEM_CODE,ORDER_NO,OUTLET_CODE,DATE_UPD",
         "partitionBy": "DATE_UPD",
         "dateColumn": "DATE_UPD",
         "hasOutletCode": "TRUE",
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
         "table": "T_RECV_HEADER",
         "alias": "Data Transaksi Recv Header",
-        "primaryKeys": "ORDER_NO,OUTLET_CODE",
+        "primaryKeys": "ORDER_NO,OUTLET_CODE,DATE_UPD",
         "partitionBy": "DATE_UPD",
         "dateColumn": "DATE_UPD",
         "hasOutletCode": "TRUE",
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -934,8 +550,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -948,50 +565,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_SCHEDULE_DETAIL",
-        "alias": "Data Transaksi Schedule Detail",
-        "primaryKeys": "OUTLET_CODE,REGION_CODE,SCH_CODE,STAFF_CODE,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_SCHEDULE_HEADER",
-        "alias": "Data Transaksi Schedule Header",
-        "primaryKeys": "OUTLET_CODE,REGION_CODE,SCH_CODE,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_SCHEDULE_SUBHEADER",
-        "alias": "Data Transaksi Schedule Subheader",
-        "primaryKeys": "OUTLET_CODE,POSITION_CODE,REGION_CODE,SCH_CODE,TIME_IN,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "1"
     },
     {
         "data": "T",
@@ -1004,8 +580,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "4"
     },
     {
         "data": "T",
@@ -1018,36 +595,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "T",
-        "table": "T_STOCK_CARD_RECAP",
-        "alias": "Data Transaksi Stock Card Recap",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_SUM_ABSENSI",
-        "alias": "Data Transaksi Sum Absensi",
-        "primaryKeys": "OUTLET_CODE,STAFF_CODE,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "4"
     },
     {
         "data": "T",
@@ -1060,8 +610,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "5"
     },
     {
         "data": "T",
@@ -1074,8 +625,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "T",
@@ -1088,148 +640,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "TMP",
-        "table": "TEMP_MOVEMENT",
-        "alias": "Data Temporary Movement",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "DATE_TRANS",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TEMP_STOCK_CARD",
-        "alias": "Data Temporary Stock Card",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "DATE_TRANS",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "TEMPL_PAGI_DETAIL",
-        "alias": "Data Template Pagi Detail",
-        "primaryKeys": "OUTLET_CODE,TEMPL_CODE,TEMPL_GROUP",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "TEMPL_PAGI_HEADER",
-        "alias": "Data Template Pagi Header",
-        "primaryKeys": "OUTLET_CODE,TEMPL_GROUP",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "TEMPL_PAGI_SUBDTL",
-        "alias": "Data Template Pagi Subdtl",
-        "primaryKeys": "ITEM_CODE,OUTLET_CODE,TEMPL_CODE,TEMPL_GROUP",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "TEMPLATE_MPCS",
-        "alias": "Data Template Mpcs",
-        "primaryKeys": "OUTLET_CODE,SEQ_MPCS",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_EXIM_DATA",
-        "alias": "Data Temporary Exim Data",
-        "primaryKeys": "OUTLET_CODE,PERIOD_MONTH,PERIOD_YEAR",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_HD",
-        "alias": "Data Temporary Hd",
-        "primaryKeys": "BILL_NO,OUTLET_CODE,POS_CODE,STAFF_NAME,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_MENU_GROUP",
-        "alias": "Data Temporary Menu Group",
-        "primaryKeys": "MENU_GROUP_CODE,OUTLET_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_MENU_GROUP_LIMIT",
-        "alias": "Data Temporary Menu Group Limit",
-        "primaryKeys": "MENU_GROUP_CODE,ORDER_TYPE,OUTLET_CODE,REGION_CODE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "TMP",
@@ -1242,358 +655,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_SALES_BY_ITEM_DETAIL",
-        "alias": "Data Temporary Sales By Item Detail",
-        "primaryKeys": "ITEM_CODE,OUTLET_CODE,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_SALES_BY_ITEM_DETAIL_LOG",
-        "alias": "Data Temporary Sales By Item Detail Log",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_SALES_GRP",
-        "alias": "Data Temporary Sales Grp",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_SALES_SUM",
-        "alias": "Data Temporary Sales Sum",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_SCHEDULE_DETAIL",
-        "alias": "Data Temporary Schedule Detail",
-        "primaryKeys": "TMP_OUTLET_CODE,TMP_REGION_CODE,TMP_SCH_CODE,TMP_STAFF_CODE,TMP_TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TMP_TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_TOT_TRANS",
-        "alias": "Data Temporary Tot Trans",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_VIEW_SCHEDULE",
-        "alias": "Data Temporary View Schedule",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "VIEW_TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "TRX_KDS_HEADER",
-        "alias": "Data Transaksi Kds Header",
-        "primaryKeys": "BILL_NO,DAY_SEQ,OUTLET_CODE,POS_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "TRX_KDS_ITEM",
-        "alias": "Data Transaksi Kds Item",
-        "primaryKeys": "BILL_NO,DAY_SEQ,ITEM_SEQ,OUTLET_CODE,POS_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "TRX_KDS_ITEM_DETAIL",
-        "alias": "Data Transaksi Kds Item Detail",
-        "primaryKeys": "BILL_NO,DAY_SEQ,ITEM_DETAIL_SEQ,ITEM_SEQ,OUTLET_CODE,POS_CODE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_HIST_DEL_PRD",
-        "alias": "Transaksi Delete Produksi",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "DATE_MPCS",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_ITEM_PRICE_SCH",
-        "alias": "Transaksi Item Price Skedul",
-        "primaryKeys": "EFFECTIVE_DATE,MENU_ITEM_CODE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_KDS_KRUSHER",
-        "alias": "Transaksi KDS Krusher",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_MPCS_LOG",
-        "alias": "Transaksi MPCS Log",
-        "primaryKeys": "SEQ_NO,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_SEND_RECV_D",
-        "alias": "Data Transaksi Terima D",
-        "primaryKeys": "FILE_NO,SEQ_NO,TRANS_DATE,TRANS_TYPE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_SEND_RECV_H",
-        "alias": "Data Transaksi Terima H",
-        "primaryKeys": "SEQ_NO,TRANS_DATE,TRANS_TYPE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_STOCK_CARD_HIST",
-        "alias": "Transaksi Histori Stock Card",
-        "primaryKeys": "SEQ_NO,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_STOCK_CARD_HIST_TRIGGER",
-        "alias": "Transaksi Histori Stock Card Triger",
-        "primaryKeys": "SEQ_NO,TRANS_DATE",
-        "partitionBy": "",
-        "dateColumn": "TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TEMP_GROUP_ITEM",
-        "alias": "Temporary Group Item",
-        "primaryKeys": "GROUP_ITEM,ITEM_CODE",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TEMP_LOG",
-        "alias": "Temporary Log",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TEMPLATE_REPORT",
-        "alias": "Temporary Group Item",
-        "primaryKeys": "GROUP_TEMPLATE,ITEM_CODE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_ITEM_CONVERTION",
-        "alias": "Temporary Item Konversi",
-        "primaryKeys": "ITEM_CODE,MENU_SET",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TMP_VIEW_SCHEDULE",
-        "alias": "Temporary Lihat Jadwal",
-        "primaryKeys": "",
-        "partitionBy": "",
-        "dateColumn": "VIEW_TRANS_DATE",
-        "hasOutletCode": "FALSE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "TMP",
-        "table": "TX_TAX",
-        "alias": "Temporary Pajak",
-        "primaryKeys": "ITEM_TRX",
-        "partitionBy": "",
-        "dateColumn": "",
-        "hasOutletCode": "",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
-    },
-    {
-        "data": "T",
-        "table": "T_MPCS_MANAGEMENT",
-        "alias": "Data Management MPCS",
-        "primaryKeys": "OUTLET_CODE,FRYER_NO,FRYER_TYPE",
-        "partitionBy": "",
-        "dateColumn": "DATE_UPD",
-        "hasOutletCode": "TRUE",
-        "emptyFirst": "FALSE",
-        "active": "TRUE",
-        "process": "FALSE",
-        "dateUpd": "6-Mar-24",
-        "timeUpd": "145246"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "2"
     },
     {
         "data": "M",
@@ -1606,8 +670,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "6"
     },
     {
         "data": "M",
@@ -1620,8 +685,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "6"
     },
     {
         "data": "M",
@@ -1634,8 +700,9 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "6"
     },
     {
         "data": "T",
@@ -1648,7 +715,53 @@
         "emptyFirst": "FALSE",
         "active": "TRUE",
         "process": "TRUE",
-        "dateUpd": "5-Sep-24",
-        "timeUpd": "104141"
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "104141",
+        "priority": "7"
+    },
+    {
+        "data": "T",
+        "table": "T_MPCS_MANAGEMENT",
+        "alias": "Riwayat Ganti Minyak",
+        "primaryKeys": "OUTLET_CODE,PROCESS_NO",
+        "partitionBy": "DATE_UPD",
+        "dateColumn": "DATE_UPD",
+        "hasOutletCode": "TRUE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "145246",
+        "priority": "2"
+    },
+    {
+        "data": "T",
+        "table": "T_OVERTIME_ASSIGNMENT_HDR",
+        "alias": "Penugasan Lembur",
+        "primaryKeys": "REGION_CODE,OUTLET_CODE,TRANS_DATE,SEQ",
+        "partitionBy": "TRANS_DATE",
+        "dateColumn": "TRANS_DATE",
+        "hasOutletCode": "TRUE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "145246",
+        "priority": "2"
+    },
+    {
+        "data": "T",
+        "table": "T_OVERTIME_ASSIGNMENT_DTL",
+        "alias": "Penugasan Lembur Detil",
+        "primaryKeys": "REGION_CODE,OUTLET_CODE,TRANS_DATE,SEQ,STAFF_CODE",
+        "partitionBy": "TRANS_DATE",
+        "dateColumn": "TRANS_DATE",
+        "hasOutletCode": "TRUE",
+        "emptyFirst": "FALSE",
+        "active": "TRUE",
+        "process": "TRUE",
+        "dateUpd": "15-Jan-25",
+        "timeUpd": "145246",
+        "priority": "2"
     }
 ]
