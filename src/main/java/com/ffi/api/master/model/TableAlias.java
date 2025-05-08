@@ -46,6 +46,9 @@ public class TableAlias {
     @JsonProperty("primaryKeys")
     private String primaryKeys;
 
+    @JsonProperty("priority")
+    private String priority;
+
     public String getData() {
         return data;
     }
@@ -144,6 +147,14 @@ public class TableAlias {
 
     public void setPrimaryKeys(String primaryKeys) {
         this.primaryKeys = primaryKeys;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 
     @Override
