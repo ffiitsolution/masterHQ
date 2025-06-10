@@ -287,13 +287,16 @@ public class ProcessDaoImpl implements ProcessDao {
         return result;
     }
 
+    // handle dateColumn by M Joko - 6 Jun 2025
     public String customQuery(String tableName, String date, String outletId) {
-        String conditionText = "";
-        if (tableName.charAt(0) == 'M') {
-            conditionText = " WHERE DATE_UPD = '" + date + "'";
-        } else if (tableName.charAt(0) == 'T') {
-            conditionText = " WHERE TRANS_DATE = '" + date + "'";
+        String dateColumn = getDateColumn(tableName);
+        if (dateColumn.isBlank()) {
+            dateColumn = switch (tableName.charAt(0)) {
+                case 'T' -> "TRANS_DATE";
+                default -> "DATE_UPD";
+            };
         }
+        String conditionText = " WHERE " + dateColumn + " = '" + date + "'";
         String checkOutletCode = "SELECT COUNT(column_name) FROM all_tab_columns WHERE table_name = '" + tableName + "' AND column_name = 'OUTLET_CODE'";
         int count = jdbcTemplate.queryForObject(checkOutletCode, new HashMap(), Integer.class);
         if (count > 0) {
@@ -533,6 +536,21 @@ public class ProcessDaoImpl implements ProcessDao {
         }
         TableAlias tableAlias = ta.get();
         return tableAlias.getPartitionBy();
+    }
+
+    public String getDateColumn(String tableName) {
+        Optional<TableAlias> ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_T, "table", tableName);
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_T, "alias", tableName);
+        }
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_M, "table", tableName);
+        }
+        if (ta.isEmpty()) {
+            ta = tableAliasUtil.firstByColumn(TableAliasUtil.TABLE_ALIAS_M, "alias", tableName);
+        }
+        TableAlias tableAlias = ta.get();
+        return tableAlias.getDateColumn();
     }
     // ========================== End Method from Lukas 17-10-2023 ======================
 
