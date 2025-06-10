@@ -71,6 +71,9 @@ public class IndexController {
     @Autowired
     ProcessServices processServices;
 
+    @Value("${spring.datasource.username}")
+    private String urlUser;
+
     @Value("${spring.datasource.url}")
     private String urlDb;
 
@@ -97,6 +100,7 @@ public class IndexController {
         Map<String, Object> map = new HashMap<>();
         map.put("output", "welcome to master");
         map.put("urlDb", urlDb);
+        map.put("urlUser", urlUser);
         map.put("port", port);
         map.put("path", path);
         map.put("versionBe", constant.versionBe);
