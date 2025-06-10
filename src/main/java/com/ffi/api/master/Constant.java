@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Constant {
 
-    public String versionBe = "1.0824.20.4a";
+    public String versionBe = "1.0625.10.5a";
     public String startupAt;
 }
